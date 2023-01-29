@@ -1,0 +1,21 @@
+<div class="card-body" [ngClass]="color" [ngStyle]="{'grid-template-columns': playlistView?'repeat(3, 1fr)':'repeat(2, 1fr)'}">
+    <span>{{channel.name}}</span>
+    <span *ngIf="!playlistView">
+        <button *ngIf="!inPlaylist" (click)="addToPlaylist(channel.id)">
+            <mat-icon>playlist_add</mat-icon>
+            Agregar al Playlist
+        </button>
+    </span> 
+    <span *ngIf="playlistView">                
+        <button (click)="removeFromPlaylist(channel.id)">
+            <mat-icon>remove</mat-icon>
+            Eliminar
+        </button>
+    </span>
+    <span *ngIf="playlistView">
+        <button (click)="displayVideo(channel)">
+            <mat-icon>play_circle_outline</mat-icon>
+            Ver
+        </button>
+    </span>
+</div>

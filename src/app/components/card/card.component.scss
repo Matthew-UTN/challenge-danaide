@@ -1,0 +1,32 @@
+.card-body{
+    width: 100%;
+    display: grid;
+    padding: 10px 0px;
+    span{
+        justify-content: center;
+        display: flex;
+        min-width: 6em;
+        align-items: center;
+    }
+    button{
+        min-width: 9em;
+        padding: 7px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+}
+
+.shadow {
+    background-color: var(--reporte-tablero-body-cell-fondo-oscuro, #e6e6e6);
+}
+
+.clear {
+    background-color: var(--reporte-tablero-body-cell-fondo-claro, white);
+}
+
+.card-body:hover{
+    background-color: #2199e84f;
+}

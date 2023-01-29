@@ -1,0 +1,45 @@
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Channels
+        </ng-template>
+        <div class="center">
+            <div *ngIf="loading" class="dots"></div>
+            <div class="page" *ngIf="!loading">
+                <div *ngFor="let channel of channels | paginate: { itemsPerPage: 20, currentPage: p1 }; index as i">
+                    <app-card [color]="i%2 == 0 ? 'clear' : 'shadow'" [channel]="channel" (addChannel)="addToPlaylist(channel.id)" [inPlaylist]="checkIfInPlaylist(channel.id)" [playlistView]="false"></app-card>
+                </div>
+                <div style="background-color: white; font-weight: bold; border-radius: 1em;">
+                    <pagination-controls (pageChange)="p1 = $event"></pagination-controls>
+                </div>
+            </div> 
+        </div>
+    </mat-tab>
+  
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Playlist
+        </ng-template>
+        <div class="center">
+            <div *ngIf="loading" class="dots"></div>
+            <div class="page" *ngIf="!loading">
+                <div *ngFor="let playlistChannel of playlist | paginate: { itemsPerPage: 20, currentPage: p2 }; index as i">
+                    <app-card [color]="i%2 == 0 ? 'clear' : 'shadow'" [channel]="playlistChannel" (removeChannel)="removeFromPlaylist($event)" [playlistView]="true"></app-card>
+                </div>
+                <div style="background-color: white; font-weight: bold; border-radius: 1em;">
+                    <pagination-controls (pageChange)="p2 = $event"></pagination-controls>
+                </div>
+            </div> 
+        </div>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Notificationes
+        </ng-template>
+        <div class="center">
+            <app-notification class="notification"></app-notification>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+

@@ -1,0 +1,12 @@
+<div *ngFor="let notification of notifications; index as i">
+    <div class="card-body" [ngClass]="i%2 == 0 ? 'clear' : 'shadow'">
+        <span>{{ notification.text }}</span>
+        <span>{{ notification.type }}</span> 
+        <span>
+            <img [src]="getImage(notification.id)" width="30px">
+            <button (click)="viewImage(notification.id)">
+                <mat-icon>fullscreen</mat-icon>
+            </button>
+        </span>
+    </div>
+</div>
